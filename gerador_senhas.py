@@ -103,7 +103,7 @@ janela.geometry('450x550')
 estilizar_interface()
 
 # Adiciona um frame para agrupar os campos
-frame = tk.Frame(janela, padding="10 10 10 10")
+frame = ttk.Frame(janela, padding="10 10 10 10")
 frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
 # Permitir redimensionamento automático
