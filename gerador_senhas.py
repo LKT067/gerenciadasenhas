@@ -91,7 +91,7 @@ def listar_senhas_gui():
 
 def estilizar_interface():
     style = ttk.Style()
-    style.configure('TButton', font=('Arial', 12), background='#4CAF50', foreground='white')
+    style.configure('TButton', font=('Arial', 12), background='#4CAF50', foreground='white', padding=10)
     style.configure('TLabel', font=('Arial', 12))
     style.configure('TEntry', font=('Arial', 12))
 
@@ -103,32 +103,40 @@ janela.geometry('450x550')
 estilizar_interface()
 
 # Adiciona um frame para agrupar os campos
-frame = tk.Frame(janela, padx=10, pady=10)
-frame.grid(row=0, column=0, padx=10, pady=10)
+frame = tk.Frame(janela, padding="10 10 10 10")
+frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+
+# Permitir redimensionamento automático
+janela.columnconfigure(0, weight=1)
+janela.rowconfigure(0, weight=1)
 
 # Criação dos rótulos e campos de entrada
-tk.Label(frame, text='Serviço', font=('Arial', 12)).grid(row=0, column=0, padx=10, pady=5, sticky='w')
-entrada_servico = tk.Entry(frame, font=('Arial', 12))
-entrada_servico.grid(row=0, column=1, padx=10, pady=5)
+ttk.Label(frame, text='Serviço').grid(row=0, column=0, padx=10, pady=5, sticky='w')
+entrada_servico = ttk.Entry(frame)
+entrada_servico.grid(row=0, column=1, padx=10, pady=5, sticky=(tk.W, tk.E))
 
-tk.Label(frame, text='Usuário', font=('Arial', 12)).grid(row=1, column=0, padx=10, pady=5, sticky='w')
-entrada_usuario = tk.Entry(frame, font=('Arial', 12))
-entrada_usuario.grid(row=1, column=1, padx=10, pady=5)
+ttk.Label(frame, text='Usuário').grid(row=1, column=0, padx=10, pady=5, sticky='w')
+entrada_usuario = ttk.Entry(frame)
+entrada_usuario.grid(row=1, column=1, padx=10, pady=5, sticky=(tk.W, tk.E))
 
-tk.Label(frame, text='Tamanho da Senha', font=('Arial', 12)).grid(row=2, column=0, padx=10, pady=5, sticky='w')
-entrada_tamanho = tk.Entry(frame, font=('Arial', 12))
-entrada_tamanho.grid(row=2, column=1, padx=10, pady=5)
+ttk.Label(frame, text='Tamanho da Senha').grid(row=2, column=0, padx=10, pady=5, sticky='w')
+entrada_tamanho = ttk.Entry(frame)
+entrada_tamanho.grid(row=2, column=1, padx=10, pady=5, sticky=(tk.W, tk.E))
 
-tk.Label(frame, text='Senha Gerada', font=('Arial', 12)).grid(row=4, column=0, padx=10, pady=5, sticky='w')
-entrada_senha = tk.Entry(frame, font=('Arial', 12))
-entrada_senha.grid(row=4, column=1, padx=10, pady=5)
+ttk.Label(frame, text='Senha Gerada').grid(row=4, column=0, padx=10, pady=5, sticky='w')
+entrada_senha = ttk.Entry(frame)
+entrada_senha.grid(row=4, column=1, padx=10, pady=5, sticky=(tk.W, tk.E))
 
-tk.Label(frame, text='Senha de Autenticação', font=('Arial', 12)).grid(row=6, column=0, padx=10, pady=5, sticky='w')
-entrada_autenticacao = tk.Entry(frame, font=('Arial', 12), show='*')
-entrada_autenticacao.grid(row=6, column=1, padx=10, pady=5)
+ttk.Label(frame, text='Senha de Autenticação').grid(row=6, column=0, padx=10, pady=5, sticky='w')
+entrada_autenticacao = ttk.Entry(frame, show='*')
+entrada_autenticacao.grid(row=6, column=1, padx=10, pady=5, sticky=(tk.W, tk.E))
 
-tk.Button(frame, text='Gerar e Salvar Senha', command=salvar_senha_gui, font=('Arial', 12), bg='#4CAF50', fg='white').grid(row=3, column=1, padx=10, pady=10)
-tk.Button(frame, text='Copiar Senha', command=copiar_senha, font=('Arial', 12), bg='#2196F3', fg='white').grid(row=5, column=1, padx=10, pady=10)
-tk.Button(frame, text='Autenticar e Listar Senhas', command=autenticar_usuario, font=('Arial', 12), bg='#FFC107', fg='black').grid(row=7, column=1, padx=10, pady=10)
+ttk.Button(frame, text='Gerar e Salvar Senha', command=salvar_senha_gui).grid(row=3, column=1, padx=10, pady=10)
+ttk.Button(frame, text='Copiar Senha', command=copiar_senha).grid(row=5, column=1, padx=10, pady=10)
+ttk.Button(frame, text='Autenticar e Listar Senhas', command=autenticar_usuario).grid(row=7, column=1, padx=10, pady=10)
+
+# Permitir redimensionamento automático dos widgets dentro do frame
+for child in frame.winfo_children():
+    child.grid_configure(sticky=(tk.W, tk.E))
 
 janela.mainloop()
