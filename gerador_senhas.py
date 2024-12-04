@@ -1,5 +1,6 @@
 import tkinter as tk # Importa o módulo tkinter para criar a interface gráfica
 from tkinter import messagebox # Importa a função messagebox para exibir mensagens
+from tkinter import ttk
 import random # Importa o módulo random para gerar senhas aleatórias
 import string # Importa o módulo string para usar caracteres alfanuméricos e símbolos
 import re # Importa o módulo de expressões regulares
@@ -143,16 +144,16 @@ def listar_senhas():
         texto.insert(tk.END, f'Serviço: {servico}\nUsuário: {usuario}\nSenha: {senha}\n\n') # Insere as informações das senhas no widget de texto
 
 def estilizar_interface():
-    janela.style = tk.ttk.Style() # Cria um estilo para a interface
-    janela.style.configure('TButton', font=('Arial', 12), background='#4CAF50', foreground='white') # Estiliza os botões
-    janela.style.configure('TLabel', font=('Arial', 12)) # Estiliza os rótulos
-    janela.style.configure('TEntry', font=('Arial', 12)) # Estiliza as entradas de texto
+    style = ttk.Style()  # Usa o ttk.Style
+    style.configure('TButton', font=('Arial', 12), background='#4CAF50', foreground='white')
+    style.configure('TLabel', font=('Arial', 12))
+    style.configure('TEntry', font=('Arial', 12))
 
 # Configuração da interface Tkinter
 janela = tk.Tk() # Cria uma nova Tkinter
 janela.title('Gerenciador de Contas e Senhas')
 janela.geometry('450x550')
-,
+
 estilizar_interface()
 
 # Adiciona um frame para agrupar os campos
