@@ -149,11 +149,11 @@ def estilizar_interface():
     janela.style.configure('TEntry', font=('Arial', 12)) # Estiliza as entradas de texto
 
 # Configuração da interface Tkinter
-janela = tk.Tk() # Cria uma nova instância de Tkinter
-janela.title('Gerenciador de Contas e Senhas') # Define o título da janela
-janela.geometry('450x550') # Define o tamanho da janela
-
-estilizar_interface() # Aplica estilos à interface
+janela = tk.Tk() # Cria uma nova Tkinter
+janela.title('Gerenciador de Contas e Senhas')
+janela.geometry('450x550')
+,
+estilizar_interface()
 
 # Adiciona um frame para agrupar os campos
 frame = tk.Frame(janela, padx=10, pady=10)
@@ -164,9 +164,9 @@ tk.Label(frame, text='Serviço', font=('Arial', 12)).grid(row=0, column=0, padx=
 entrada_servico = tk.Entry(frame, font=('Arial', 12)) # Cria uma entrada de texto para o nome do serviço
 entrada_servico.grid(row=0, column=1, padx=10, pady=5) # Posiciona a entrada de texto na janela
 
-tk.Label(frame, text='Usuário', font=('Arial', 12)).grid(row=1, column=0, padx=10, pady=5, sticky='w') # Adiciona um rótulo para o campo de usuário
+tk.Label(frame, text='Usuário', font=('Arial', 12)).grid(row=1, column=0, padx=10, pady=5, sticky='w') # Adiciona um rótulo para o campo de usuário 
 entrada_usuario = tk.Entry(frame, font=('Arial', 12)) # Cria uma entrada de texto para o nome do usuário
-entrada_usuario.grid(row=1, column=1, padx=10, pady=5) # Posiciona a entrada de texto na janela
+entrada_usuario.grid(row=1, column=1, padx=10, pady=5) # Posicione a entrada de texto na janela
 
 tk.Label(frame, text='Tamanho da Senha', font=('Arial', 12)).grid(row=2, column=0, padx=10, pady=5, sticky='w') # Adiciona um rótulo para o campo de tamanho da senha
 entrada_tamanho = tk.Entry(frame, font=('Arial', 12)) # Cria uma entrada de texto para o tamanho da senha
@@ -177,17 +177,15 @@ entrada_senha = tk.Entry(frame, font=('Arial', 12)) # Cria uma entrada de texto 
 entrada_senha.grid(row=4, column=1, padx=10, pady=5) # Posiciona a entrada de texto na janela
 
 # Campo de entrada para a senha de autenticação
-tk.Label(frame, text='Senha de Autenticação', font=('Arial', 12)).grid(row=6, column=0, padx=10, pady=5, sticky='w') # Adiciona um rótulo para o campo de senha de autenticação
-entrada_autenticacao = tk.Entry(frame, font=('Arial', 12), show='*') # Cria uma entrada de texto para a senha de autenticação, ocultando os caracteres
-entrada_autenticacao.grid(row=6, column=1, padx=10, pady=5) # Posiciona a entrada de texto na janela
+tk.Label(frame, text='Senha de Autenticação', font=('Arial', 12)).grid(row=6, column=0, padx=10, pady=5, sticky='w')
+entrada_autenticacao = tk.Entry(frame, font=('Arial', 12), show='*') # O parâmetro show='*' oculta a senha digitada
+entrada_autenticacao.grid(row=6, column=1, padx=10, pady=5)
 
-# Botão para gerar e salvar a senha
-tk.Button(frame, text='Gerar e Salvar Senha', command=salvar_senha, font=('Arial', 12), bg='#4CAF50', fg='white').grid(row=3, column=1, padx=10, pady=10) # Adiciona um botão para gerar e salvar a senha
+tk.Button(frame, text='Gerar e Salvar Senha', command=salvar_senha, font=('Arial', 12), bg='#4CAF50', fg='white').grid(row=3, column=1, padx=10, pady=10)
 
-# Botão para copiar a senha gerada para a área de transferência
-tk.Button(frame, text='Copiar Senha', command=copiar_senha, font=('Arial', 12), bg='#2196F3', fg='white').grid(row=5, column=1, padx=10, pady=10) # Adiciona um botão para copiar a senha gerada
+# Adiciona um botão que chama a função copiar_senha ao ser clicado
+tk.Button(frame, text='Copiar Senha', command=copiar_senha, font=('Arial', 12), bg='#2196F3', fg='white').grid(row=5, column=1, padx=10, pady=10)
 
-# Botão para autenticar o usuário e listar as senhas
-tk.Button(frame, text='Autenticar e Listar Senhas', command=autenticar_usuario, font=('Arial', 12), bg='#FFC107', fg='black').grid(row=7, column=1, padx=10, pady=10) # Adiciona um botão para autenticar o usuário e listar as senhas
+tk.Button(frame, text='Autenticar e Listar Senhas', command=autenticar_usuario, font=('Arial', 12), bg='#FFC107', fg='black').grid(row=7, column=1, padx=10, pady=10)
 
 janela.mainloop() # Inicia o loop principal da interface, mantendo a janela aberta
