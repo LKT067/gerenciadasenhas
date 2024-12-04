@@ -3,6 +3,9 @@ from tkinter import messagebox
 from tkinter import ttk
 import random
 import string
+import re
+import os  # Certifique-se de importar 'os'
+from cryptography.fernet import Fernet  # Certifique-se de importar 'Fernet'
 from db_utils import criar_tabela, salvar_senha, listar_senhas, excluir_senha
 from crypto_utils import gerar_chave, carregar_chave, criptografar_senha, descriptografar_senha
 
